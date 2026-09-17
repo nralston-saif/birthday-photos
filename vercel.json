@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "",
+  "buildCommand": "python3 build/build.py && node --test tests/atlas.test.js && python3 -m unittest discover -s tests -p 'test_*.py'",
+  "outputDirectory": "site/publish",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {"key": "X-Robots-Tag", "value": "noindex, nofollow"},
+        {"key": "X-Content-Type-Options", "value": "nosniff"},
+        {"key": "Referrer-Policy", "value": "same-origin"}
+      ]
+    }
+  ]
+}

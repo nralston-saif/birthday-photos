@@ -1,0 +1,924 @@
+{
+  "photos": {
+    "065_JVS04801.JPG": {
+      "thumb": "photos/thumb/065_JVS04801.jpg",
+      "full": "photos/full/065_JVS04801.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2025,
+      "date": "2025-08-21T18:59:53",
+      "caption": "",
+      "approx": true
+    },
+    "1d0701ae-21eb-4b51-8349-aa1df73ff4d3.jpg": {
+      "thumb": "photos/thumb/1d0701ae-21eb-4b51-8349-aa1df73ff4d3.jpg",
+      "full": "photos/full/1d0701ae-21eb-4b51-8349-aa1df73ff4d3.jpg",
+      "w": 1024,
+      "h": 768,
+      "year": 2026,
+      "date": "2026-09-17T17:46:02",
+      "caption": "",
+      "approx": false
+    },
+    "204_JVS09408.JPG": {
+      "thumb": "photos/thumb/204_JVS09408.jpg",
+      "full": "photos/full/204_JVS09408.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2025,
+      "date": "2025-08-23T20:31:26",
+      "caption": "",
+      "approx": false
+    },
+    "228_JVS01660.jpeg": {
+      "thumb": "photos/thumb/228_JVS01660.jpg",
+      "full": "photos/full/228_JVS01660.jpg",
+      "w": 1500,
+      "h": 1487,
+      "year": 2025,
+      "date": "2025-08-23T21:33:13",
+      "caption": "",
+      "approx": false
+    },
+    "2732-mowsf-250518.heic": {
+      "thumb": "photos/thumb/2732-mowsf-250518.jpg",
+      "full": "photos/full/2732-mowsf-250518.jpg",
+      "w": 907,
+      "h": 809,
+      "year": 2025,
+      "date": "2025-05-18T23:55:48",
+      "caption": "",
+      "approx": false
+    },
+    "65299093465__E646B7E3-FFB6-47DD-B3AD-FDC064B60C4E.HEIC": {
+      "thumb": "photos/thumb/65299093465__E646B7E3-FFB6-47DD-B3AD-FDC064B60C4E.jpg",
+      "full": "photos/full/65299093465__E646B7E3-FFB6-47DD-B3AD-FDC064B60C4E.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2021,
+      "date": "2021-09-10T17:22:14",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_0092.HEIC": {
+      "thumb": "photos/thumb/IMG_0092.jpg",
+      "full": "photos/full/IMG_0092.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2022,
+      "date": "2022-05-16T19:35:28",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_0105.jpeg": {
+      "thumb": "photos/thumb/IMG_0105.jpg",
+      "full": "photos/full/IMG_0105.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2025,
+      "date": "2025-05-20T13:38:30",
+      "caption": "",
+      "approx": true
+    },
+    "IMG_0130.HEIC": {
+      "thumb": "photos/thumb/IMG_0130.jpg",
+      "full": "photos/full/IMG_0130.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2026,
+      "date": "2026-07-24T02:06:32",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_0140.HEIC": {
+      "thumb": "photos/thumb/IMG_0140.jpg",
+      "full": "photos/full/IMG_0140.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2026,
+      "date": "2026-07-24T23:43:23",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_0147.HEIC": {
+      "thumb": "photos/thumb/IMG_0147.jpg",
+      "full": "photos/full/IMG_0147.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2026,
+      "date": "2026-07-25T17:57:01",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_0354.HEIC": {
+      "thumb": "photos/thumb/IMG_0354.jpg",
+      "full": "photos/full/IMG_0354.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2022,
+      "date": "2022-06-29T16:02:45",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_0458.HEIC": {
+      "thumb": "photos/thumb/IMG_0458.jpg",
+      "full": "photos/full/IMG_0458.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2022,
+      "date": "2022-07-12T01:27:37",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_0606.HEIC": {
+      "thumb": "photos/thumb/IMG_0606.jpg",
+      "full": "photos/full/IMG_0606.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2022,
+      "date": "2022-07-23T18:23:30",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_0706.HEIC": {
+      "thumb": "photos/thumb/IMG_0706.jpg",
+      "full": "photos/full/IMG_0706.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2022,
+      "date": "2022-07-29T00:22:14",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_0889.JPG": {
+      "thumb": "photos/thumb/IMG_0889.jpg",
+      "full": "photos/full/IMG_0889.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2025,
+      "date": "2025-09-06T16:59:27",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_1833.HEIC": {
+      "thumb": "photos/thumb/IMG_1833.jpg",
+      "full": "photos/full/IMG_1833.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2022,
+      "date": "2022-12-29T03:09:23",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_2068.HEIC": {
+      "thumb": "photos/thumb/IMG_2068.jpg",
+      "full": "photos/full/IMG_2068.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2024,
+      "date": "2024-10-06T02:32:56",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_2774.HEIC": {
+      "thumb": "photos/thumb/IMG_2774.jpg",
+      "full": "photos/full/IMG_2774.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2023,
+      "date": "2023-05-05T01:33:28",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_2908.jpeg": {
+      "thumb": "photos/thumb/IMG_2908.jpg",
+      "full": "photos/full/IMG_2908.jpg",
+      "w": 320,
+      "h": 480,
+      "year": 2026,
+      "date": "2026-09-17T17:46:02",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_2950.HEIC": {
+      "thumb": "photos/thumb/IMG_2950.jpg",
+      "full": "photos/full/IMG_2950.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2021,
+      "date": "2021-06-27T02:43:15",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_3077.JPG": {
+      "thumb": "photos/thumb/IMG_3077.jpg",
+      "full": "photos/full/IMG_3077.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2021,
+      "date": "2021-09-14T20:36:46",
+      "caption": "",
+      "approx": true
+    },
+    "IMG_3272.jpeg": {
+      "thumb": "photos/thumb/IMG_3272.jpg",
+      "full": "photos/full/IMG_3272.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2021,
+      "date": "2021-09-14T17:52:09",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_3308.HEIC": {
+      "thumb": "photos/thumb/IMG_3308.jpg",
+      "full": "photos/full/IMG_3308.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2023,
+      "date": "2023-07-25T18:28:28",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_3398.JPG": {
+      "thumb": "photos/thumb/IMG_3398.jpg",
+      "full": "photos/full/IMG_3398.jpg",
+      "w": 750,
+      "h": 1000,
+      "year": 2026,
+      "date": "2026-09-17T17:46:24",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_3564.jpeg": {
+      "thumb": "photos/thumb/IMG_3564.jpg",
+      "full": "photos/full/IMG_3564.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2025,
+      "date": "2025-05-20T13:40:15",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_3676.HEIC": {
+      "thumb": "photos/thumb/IMG_3676.jpg",
+      "full": "photos/full/IMG_3676.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2020,
+      "date": "2020-05-09T21:53:48",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_3807.HEIC": {
+      "thumb": "photos/thumb/IMG_3807.jpg",
+      "full": "photos/full/IMG_3807.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2023,
+      "date": "2023-11-26T23:19:58",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_4243.heic": {
+      "thumb": "photos/thumb/IMG_4243.jpg",
+      "full": "photos/full/IMG_4243.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2024,
+      "date": "2024-01-03T18:45:03",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_4252.HEIC": {
+      "thumb": "photos/thumb/IMG_4252.jpg",
+      "full": "photos/full/IMG_4252.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2020,
+      "date": "2020-11-24T02:24:17",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_4265.HEIC": {
+      "thumb": "photos/thumb/IMG_4265.jpg",
+      "full": "photos/full/IMG_4265.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2020,
+      "date": "2020-11-26T18:00:39",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_4370.HEIC": {
+      "thumb": "photos/thumb/IMG_4370.jpg",
+      "full": "photos/full/IMG_4370.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2020,
+      "date": "2020-12-28T16:55:48",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_4373.HEIC": {
+      "thumb": "photos/thumb/IMG_4373.jpg",
+      "full": "photos/full/IMG_4373.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2020,
+      "date": "2020-12-28T16:56:31",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_4563.JPG": {
+      "thumb": "photos/thumb/IMG_4563.jpg",
+      "full": "photos/full/IMG_4563.jpg",
+      "w": 1500,
+      "h": 1001,
+      "year": 2024,
+      "date": "2024-03-02T18:56:18",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_4751.HEIC": {
+      "thumb": "photos/thumb/IMG_4751.jpg",
+      "full": "photos/full/IMG_4751.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2024,
+      "date": "2024-05-08T16:45:35",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_4761.PNG": {
+      "thumb": "photos/thumb/IMG_4761.jpg",
+      "full": "photos/full/IMG_4761.jpg",
+      "w": 693,
+      "h": 1500,
+      "year": 2021,
+      "date": "2021-05-06T15:18:31",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_4766.HEIC": {
+      "thumb": "photos/thumb/IMG_4766.jpg",
+      "full": "photos/full/IMG_4766.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2021,
+      "date": "2021-05-07T19:56:06",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_4775.HEIC": {
+      "thumb": "photos/thumb/IMG_4775.jpg",
+      "full": "photos/full/IMG_4775.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2021,
+      "date": "2021-05-09T00:45:14",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_4828.HEIC": {
+      "thumb": "photos/thumb/IMG_4828.jpg",
+      "full": "photos/full/IMG_4828.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2023,
+      "date": "2023-07-19T02:31:53",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_5052.HEIC": {
+      "thumb": "photos/thumb/IMG_5052.jpg",
+      "full": "photos/full/IMG_5052.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2024,
+      "date": "2024-07-18T02:26:39",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_5382.HEIC": {
+      "thumb": "photos/thumb/IMG_5382.jpg",
+      "full": "photos/full/IMG_5382.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2023,
+      "date": "2023-08-05T16:42:02",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_5481.jpeg": {
+      "thumb": "photos/thumb/IMG_5481.jpg",
+      "full": "photos/full/IMG_5481.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2022,
+      "date": "2022-07-04T11:30:16",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_5558.HEIC": {
+      "thumb": "photos/thumb/IMG_5558.jpg",
+      "full": "photos/full/IMG_5558.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2021,
+      "date": "2021-12-25T17:03:29",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_5650.jpeg": {
+      "thumb": "photos/thumb/IMG_5650.jpg",
+      "full": "photos/full/IMG_5650.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2026,
+      "date": "2026-03-04T16:52:57",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_5856.HEIC": {
+      "thumb": "photos/thumb/IMG_5856.jpg",
+      "full": "photos/full/IMG_5856.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2022,
+      "date": "2022-04-16T00:54:30",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_6484.heic": {
+      "thumb": "photos/thumb/IMG_6484.jpg",
+      "full": "photos/full/IMG_6484.jpg",
+      "w": 614,
+      "h": 909,
+      "year": 2026,
+      "date": "2026-09-17T17:46:04",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_7094.HEIC": {
+      "thumb": "photos/thumb/IMG_7094.jpg",
+      "full": "photos/full/IMG_7094.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2025,
+      "date": "2025-02-13T15:41:14",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_7193.HEIC": {
+      "thumb": "photos/thumb/IMG_7193.jpg",
+      "full": "photos/full/IMG_7193.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2025,
+      "date": "2025-03-13T01:43:55",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_7248.HEIC": {
+      "thumb": "photos/thumb/IMG_7248.jpg",
+      "full": "photos/full/IMG_7248.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2025,
+      "date": "2025-03-16T15:53:08",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_7311.JPG": {
+      "thumb": "photos/thumb/IMG_7311.jpg",
+      "full": "photos/full/IMG_7311.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2023,
+      "date": "2023-02-20T14:03:51",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_7825.HEIC": {
+      "thumb": "photos/thumb/IMG_7825.jpg",
+      "full": "photos/full/IMG_7825.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2025,
+      "date": "2025-07-13T16:58:08",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_7966.HEIC": {
+      "thumb": "photos/thumb/IMG_7966.jpg",
+      "full": "photos/full/IMG_7966.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2023,
+      "date": "2023-11-24T17:17:56",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_8078.HEIC": {
+      "thumb": "photos/thumb/IMG_8078.jpg",
+      "full": "photos/full/IMG_8078.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2025,
+      "date": "2025-08-12T05:01:54",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_8112_1.HEIC": {
+      "thumb": "photos/thumb/IMG_8112_1.jpg",
+      "full": "photos/full/IMG_8112_1.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2025,
+      "date": "2025-08-21T01:49:52",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_8386.HEIC": {
+      "thumb": "photos/thumb/IMG_8386.jpg",
+      "full": "photos/full/IMG_8386.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2025,
+      "date": "2025-09-05T03:23:06",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_8558.HEIC": {
+      "thumb": "photos/thumb/IMG_8558.jpg",
+      "full": "photos/full/IMG_8558.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2025,
+      "date": "2025-09-07T16:11:33",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_8606.HEIC": {
+      "thumb": "photos/thumb/IMG_8606.jpg",
+      "full": "photos/full/IMG_8606.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2025,
+      "date": "2025-10-03T21:01:51",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_8734.HEIC": {
+      "thumb": "photos/thumb/IMG_8734.jpg",
+      "full": "photos/full/IMG_8734.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2025,
+      "date": "2025-11-25T03:03:15",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_8768.HEIC": {
+      "thumb": "photos/thumb/IMG_8768.jpg",
+      "full": "photos/full/IMG_8768.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2025,
+      "date": "2025-11-28T21:05:36",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_8811.HEIC": {
+      "thumb": "photos/thumb/IMG_8811.jpg",
+      "full": "photos/full/IMG_8811.jpg",
+      "w": 1500,
+      "h": 1125,
+      "year": 2025,
+      "date": "2025-12-30T22:52:00",
+      "caption": "",
+      "approx": false
+    },
+    "IMG_9238.jpeg": {
+      "thumb": "photos/thumb/IMG_9238.jpg",
+      "full": "photos/full/IMG_9238.jpg",
+      "w": 1125,
+      "h": 1500,
+      "year": 2021,
+      "date": "2021-11-25T18:22:07",
+      "caption": "",
+      "approx": false
+    }
+  },
+  "panels": [
+    {
+      "id": "world",
+      "title": "The World",
+      "kind": "main",
+      "west": -180.0,
+      "east": 180.0,
+      "south": -58.0,
+      "north": 79.0,
+      "zoom": 4,
+      "file": "world.jpg",
+      "w": 4096,
+      "h": 2340,
+      "count": 44,
+      "src": "panels/world.jpg"
+    },
+    {
+      "id": "main",
+      "title": "The West",
+      "kind": "inset",
+      "west": -126.59286151111112,
+      "east": -100.91604071111107,
+      "south": 30.201485666666667,
+      "north": 52.99075766666666,
+      "zoom": 6,
+      "file": "main.jpg",
+      "w": 1169,
+      "h": 1412,
+      "count": 40,
+      "src": "panels/main.jpg"
+    },
+    {
+      "id": "inset_tahoe_city",
+      "title": "Tahoe City",
+      "kind": "inset",
+      "west": -120.33843710833328,
+      "east": -120.04402672500001,
+      "south": 39.06351816666667,
+      "north": 39.36941183333333,
+      "zoom": 12,
+      "file": "inset_tahoe_city.jpg",
+      "w": 858,
+      "h": 1150,
+      "count": 17,
+      "src": "panels/inset_tahoe_city.jpg"
+    },
+    {
+      "id": "inset_atherton",
+      "title": "Atherton",
+      "kind": "inset",
+      "west": -122.36607185833326,
+      "east": -122.09391364166673,
+      "south": 37.39981916666667,
+      "north": 37.58187083333333,
+      "zoom": 13,
+      "file": "inset_atherton.jpg",
+      "w": 1400,
+      "h": 1180,
+      "count": 12,
+      "src": "panels/inset_atherton.jpg"
+    },
+    {
+      "id": "inset_paris",
+      "title": "Paris",
+      "kind": "inset",
+      "west": 2.278764166666667,
+      "east": 2.348374166666667,
+      "south": 48.855811666666675,
+      "north": 48.88366166666666,
+      "zoom": 15,
+      "file": "inset_paris.jpg",
+      "w": 1400,
+      "h": 851,
+      "count": 3,
+      "src": "panels/inset_paris.jpg"
+    },
+    {
+      "id": "inset_thanh_pho_a_nang",
+      "title": "Đà Nẵng",
+      "kind": "inset",
+      "west": 108.224395,
+      "east": 108.474395,
+      "south": 15.70668,
+      "north": 15.95668,
+      "zoom": 13,
+      "file": "inset_thanh_pho_a_nang.jpg",
+      "w": 1400,
+      "h": 1453,
+      "count": 1,
+      "src": "panels/inset_thanh_pho_a_nang.jpg"
+    }
+  ],
+  "waypoints": [
+    {
+      "id": "wp_atherton",
+      "name": "Atherton",
+      "region": "California, United States",
+      "lat": 37.462542,
+      "lng": -122.198058,
+      "years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "story": "",
+      "files": [
+        "IMG_3272.jpeg",
+        "IMG_3077.JPG",
+        "IMG_0706.HEIC",
+        "IMG_1833.HEIC",
+        "IMG_2774.HEIC",
+        "IMG_4751.HEIC",
+        "IMG_2068.HEIC",
+        "IMG_7193.HEIC",
+        "IMG_8078.HEIC",
+        "IMG_8386.HEIC",
+        "IMG_8558.HEIC",
+        "IMG_8811.HEIC"
+      ]
+    },
+    {
+      "id": "wp_tahoe_city",
+      "name": "Tahoe City",
+      "region": "United States",
+      "lat": 39.227346,
+      "lng": -120.153371,
+      "years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "story": "",
+      "files": [
+        "IMG_2950.HEIC",
+        "IMG_9238.jpeg",
+        "IMG_5558.HEIC",
+        "IMG_5481.jpeg",
+        "IMG_0458.HEIC",
+        "IMG_0606.HEIC",
+        "IMG_4828.HEIC",
+        "IMG_3308.HEIC",
+        "IMG_5382.HEIC",
+        "IMG_7966.HEIC",
+        "IMG_3807.HEIC",
+        "IMG_5052.HEIC",
+        "IMG_7825.HEIC",
+        "IMG_8112_1.HEIC",
+        "065_JVS04801.JPG",
+        "IMG_8768.HEIC"
+      ]
+    },
+    {
+      "id": "wp_colorado",
+      "name": "Colorado",
+      "region": "United States",
+      "lat": 39.576838,
+      "lng": -104.838888,
+      "years": [
+        2022
+      ],
+      "story": "",
+      "files": [
+        "IMG_0354.HEIC"
+      ]
+    },
+    {
+      "id": "wp_denver",
+      "name": "Denver",
+      "region": "Colorado, United States",
+      "lat": 39.759067,
+      "lng": -105.010658,
+      "years": [
+        2022
+      ],
+      "story": "",
+      "files": [
+        "IMG_5856.HEIC"
+      ]
+    },
+    {
+      "id": "wp_portland",
+      "name": "Portland",
+      "region": "Oregon, United States",
+      "lat": 45.480903,
+      "lng": -122.631645,
+      "years": [
+        2022
+      ],
+      "story": "",
+      "files": [
+        "IMG_0092.HEIC"
+      ]
+    },
+    {
+      "id": "wp_elk_valley",
+      "name": "Elk Valley",
+      "region": "British Columbia, Canada",
+      "lat": 49.507129,
+      "lng": -115.183167,
+      "years": [
+        2023,
+        2025
+      ],
+      "story": "",
+      "files": [
+        "IMG_7311.JPG",
+        "IMG_7094.HEIC"
+      ]
+    },
+    {
+      "id": "wp_a_nang",
+      "name": "Đà Nẵng",
+      "region": "Việt Nam",
+      "lat": 15.83168,
+      "lng": 108.349395,
+      "years": [
+        2024
+      ],
+      "story": "",
+      "files": [
+        "IMG_4243.heic"
+      ]
+    },
+    {
+      "id": "wp_la_quinta",
+      "name": "La Quinta",
+      "region": "California, United States",
+      "lat": 33.68318,
+      "lng": -116.303078,
+      "years": [
+        2025
+      ],
+      "story": "",
+      "files": [
+        "IMG_7248.HEIC"
+      ]
+    },
+    {
+      "id": "wp_san_francisco",
+      "name": "San Francisco",
+      "region": "California, United States",
+      "lat": 37.798598,
+      "lng": -122.358792,
+      "years": [
+        2025,
+        2026
+      ],
+      "story": "",
+      "files": [
+        "IMG_8606.HEIC",
+        "IMG_8734.HEIC",
+        "IMG_5650.jpeg"
+      ]
+    },
+    {
+      "id": "wp_west_pioneer",
+      "name": "West Pioneer",
+      "region": "Washington, United States",
+      "lat": 45.843844,
+      "lng": -122.670014,
+      "years": [
+        2025
+      ],
+      "story": "",
+      "files": [
+        "IMG_0105.jpeg",
+        "IMG_3564.jpeg"
+      ]
+    },
+    {
+      "id": "wp_paris",
+      "name": "Paris",
+      "region": "Île-de-France, France",
+      "lat": 48.870167,
+      "lng": 2.307978,
+      "years": [
+        2026
+      ],
+      "story": "",
+      "files": [
+        "IMG_0130.HEIC",
+        "IMG_0140.HEIC",
+        "IMG_0147.HEIC"
+      ]
+    }
+  ],
+  "unplaced": [
+    "1d0701ae-21eb-4b51-8349-aa1df73ff4d3.jpg",
+    "204_JVS09408.JPG",
+    "228_JVS01660.jpeg",
+    "2732-mowsf-250518.heic",
+    "65299093465__E646B7E3-FFB6-47DD-B3AD-FDC064B60C4E.HEIC",
+    "IMG_0889.JPG",
+    "IMG_2908.jpeg",
+    "IMG_3398.JPG",
+    "IMG_3676.HEIC",
+    "IMG_4252.HEIC",
+    "IMG_4265.HEIC",
+    "IMG_4370.HEIC",
+    "IMG_4373.HEIC",
+    "IMG_4563.JPG",
+    "IMG_4761.PNG",
+    "IMG_4766.HEIC",
+    "IMG_4775.HEIC",
+    "IMG_6484.heic"
+  ]
+}

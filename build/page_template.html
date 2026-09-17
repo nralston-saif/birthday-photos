@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#e7eae2">
+<meta name="description" content="A birthday atlas of family photographs, places, and memories.">
+<title>Some of the places we've been</title>
+<style>/*__STYLE__*/</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to memories</a>
+<div class="shell">
+<header class="masthead"><button class="wordmark" id="home" aria-label="Return to the opening page"><span class="compass" aria-hidden="true">✧</span> A FAMILY ATLAS</button><span class="edition" id="edition">A birthday collection</span><span class="masthead-note">For Dad, with love.</span></header>
+<section class="opening" id="opening" aria-labelledby="title">
+<div class="opening-copy"><p class="eyebrow">A collection of our memories</p><h1 id="title"></h1><p class="dedication" id="dedication"></p><div class="opening-actions"><button class="primary" id="startJourney">Start the journey <span aria-hidden="true">→</span></button><button class="text-button" id="exploreMap">Explore the map</button></div><p class="collection-stats" id="collectionStats"></p></div>
+<figure class="opening-photo"><button id="heroOpen" aria-label="Open the cover photograph"><img id="heroImg" fetchpriority="high" alt=""></button><figcaption id="heroCaption"></figcaption></figure>
+</section>
+<main id="main" tabindex="-1">
+<nav class="view-nav" aria-label="Ways to explore"><button data-view="journey" aria-pressed="true">01 <span>The journey</span></button><button data-view="map" aria-pressed="false">02 <span>The map</span></button><button data-view="timeline" aria-pressed="false">03 <span>Through the years</span></button></nav>
+<section id="journeyView" aria-labelledby="journeyHeading">
+<div class="section-heading"><div><p class="eyebrow">A few memories along the way</p><h2 id="journeyHeading">From then to now.</h2></div><span class="small-meta" id="journeyCount"></span></div>
+<div class="journey-card"><button class="journey-photo" id="journeyOpen" aria-label="Enlarge the journey photograph"><img id="journeyImg" alt="" decoding="async"></button><div class="journey-copy"><p class="eyebrow" id="journeyChapter"></p><p class="journey-year" id="journeyYear"></p><h3 id="journeyTitle"></h3><p class="journey-location" id="journeyLocation"></p><p class="journey-caption" id="journeyCaption"></p><button class="text-button" id="journeyMap">Find this memory on the map ↗</button><div class="journey-controls"><button id="journeyPrev" aria-label="Previous memory">←</button><span id="journeyPosition" aria-live="polite"></span><button id="journeyNext" aria-label="Next memory">→</button></div></div></div>
+<div class="journey-progress" id="journeyProgress" aria-label="Jump to a memory"></div><div class="journey-ending" id="journeyEnding" hidden><h3>And more places ahead.</h3><p>Happy Birthday Dad!</p><button class="primary" id="allMemories">See all the photographs →</button></div>
+</section>
+<section id="mapView" hidden aria-labelledby="mapHeading">
+<div class="section-heading"><div><p class="eyebrow">The places behind the photographs</p><h2 id="mapHeading">Every place, a memory.</h2></div><label class="sheet-select">Map sheet<select id="sheetSelect"></select></label></div>
+<div class="map-layout"><div class="map-column"><div class="chart" id="chart" aria-label="Interactive family map"><div class="map-stage" id="mapStage"><img id="mapImg" alt=""><div id="pins"></div></div><div class="map-controls"><button id="zoomIn" aria-label="Zoom in">+</button><button id="zoomOut" aria-label="Zoom out">−</button><button id="zoomReset" aria-label="Fit map sheet">⤢</button></div><a class="map-credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a></div><p class="map-help">Choose a numbered group to look closer. Use + to zoom, then drag to move.</p><div class="cluster-choices" id="clusterChoices" hidden></div><div class="places-heading"><h3>Index of places</h3><span id="placeCount"></span></div><div class="place-index" id="placeIndex"></div></div>
+<article class="place-detail" id="placeDetail" tabindex="-1" aria-labelledby="placeName"><p class="eyebrow" id="placeMeta"></p><h3 id="placeName"></h3><p id="placeStory" class="place-story" hidden></p><figure class="featured"><button id="featuredOpen" aria-label="Enlarge featured photograph"><img id="featuredImg" alt="" decoding="async"></button><figcaption id="featuredCaption"></figcaption></figure><div class="gallery" id="gallery"></div><div class="place-stepper"><button id="placePrev">← Previous place</button><button id="placeNext">Next place →</button></div><button class="text-button editor-only" id="editPlace" hidden>Edit this place and its cover</button></article></div>
+</section>
+<section id="timelineView" hidden aria-labelledby="timelineHeading"><div class="section-heading"><div><p class="eyebrow">The whole collection, in order</p><h2 id="timelineHeading">Through the years.</h2></div><span id="timelineCount" class="small-meta" aria-live="polite"></span></div><div class="filters"><label>Year<select id="yearFilter"><option value="">Every year</option></select></label><label>Chapter<select id="chapterFilter"><option value="">Every chapter</option></select></label><label>Place<select id="placeFilter"><option value="">Every place</option></select></label><button class="text-button" id="clearFilters">Clear filters</button></div><div id="timeline"></div></section>
+</main>
+<aside class="editor-bar" id="editorBar" hidden aria-label="Editing tools"><div><strong>Your copy of the atlas</strong><p>Changes stay on this device. Export your writing to include it in a new build.</p></div><span id="saveStatus" role="status"></span><button id="retrySave" hidden>Retry save</button><button id="editIntro">Edit title & dedication</button><button id="addPlace">Add a place</button><button id="exportWriting">Export writing</button><label class="file-button">Import writing<input id="importWriting" type="file" accept="application/json,.json"></label><button id="finishEditing">Done editing</button></aside>
+<footer><p id="footerStats"></p><div><button class="text-button" id="toggleEditor">Edit this atlas</button></div><p class="footer-note">Made with love, for the places we share.</p></footer>
+</div>
+<dialog id="lightbox" class="lightbox" aria-labelledby="lbCaption"><button class="lightbox-close" id="lbClose" aria-label="Close photograph">Close ×</button><figure><img id="lbImg" alt=""><figcaption><h2 id="lbCaption"></h2><p id="lbMeta"></p></figcaption></figure><div class="lightbox-controls"><button id="lbPrev" aria-label="Previous photograph">←</button><span id="lbCount" aria-live="polite"></span><button id="lbNext" aria-label="Next photograph">→</button><button class="editor-only" id="editPhoto" hidden>Edit photograph</button></div></dialog>
+<dialog id="editDialog" class="edit-dialog" aria-labelledby="editHeading"><form id="editForm"><div class="dialog-heading"><h2 id="editHeading"></h2><button type="button" id="editClose" aria-label="Cancel editing">×</button></div><div id="editFields"></div><p id="editError" role="alert"></p><div class="dialog-actions"><button type="button" id="editCancel">Cancel</button><button class="primary" type="submit">Save changes</button></div></form></dialog>
+<div id="notice" class="notice" role="status" hidden></div><noscript><p>This atlas needs JavaScript enabled to explore the photographs.</p></noscript>
+<script>var DATA = /*__DATA__*/null;</script>
+<script>/*__CORE__*/</script>
+<script>/*__APP__*/</script>
+</body></html>

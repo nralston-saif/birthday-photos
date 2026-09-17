@@ -1,0 +1,28 @@
+{
+  "cu_melbourne": {
+    "lat": -37.814,
+    "lng": 144.9633,
+    "name": "Melbourne"
+  },
+  "cu_palo_alto_2": {
+    "lat": 37.4419,
+    "lng": -122.143,
+    "name": "Palo Alto"
+  },
+  "cu_roswell": {
+    "lat": 34.0232,
+    "lng": -84.3616,
+    "name": "Roswell"
+  },
+  "cu_truckee": {
+    "lat": 39.328,
+    "lng": -120.1833,
+    "name": "Truckee"
+  },
+  "cu_barcelona": {
+    "name": "Barcelona",
+    "region": "Spain",
+    "lat": 41.3888,
+    "lng": 2.159
+  }
+}

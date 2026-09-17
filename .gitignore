@@ -1,0 +1,19 @@
+# Local originals, processing files, and private working notes
+/originals/
+/work/
+/sheets/
+/.claude/
+/HANDOFF.md
+
+# Generated output and hosting credentials
+/site/
+.vercel/
+.env
+.env.*
+!.env.example
+
+# Machine and language caches
+.DS_Store
+__pycache__/
+*.pyc
+node_modules/

@@ -1,0 +1,52 @@
+{
+  "wp_atherton": {
+    "name": "Atherton",
+    "story": "",
+    "cover": "IMG_3398.JPG"
+  },
+  "cu_barcelona": {
+    "cover": "IMG_8386.HEIC"
+  },
+  "cu_palo_alto_2": {
+    "cover": "IMG_4252.HEIC"
+  },
+  "cu_truckee": {
+    "cover": "228_JVS01660.jpeg"
+  },
+  "wp_denver": {
+    "cover": "IMG_4775.HEIC"
+  },
+  "wp_tahoe_city": {
+    "cover": "065_JVS04801.JPG"
+  },
+  "wp_colorado": {
+    "cover": "IMG_0354.HEIC"
+  },
+  "wp_portland": {
+    "cover": "IMG_0092.HEIC"
+  },
+  "wp_elk_valley": {
+    "cover": "IMG_7094.HEIC"
+  },
+  "wp_a_nang": {
+    "cover": "IMG_4243.heic"
+  },
+  "cu_melbourne": {
+    "cover": "1d0701ae-21eb-4b51-8349-aa1df73ff4d3.jpg"
+  },
+  "cu_roswell": {
+    "cover": "IMG_4563.JPG"
+  },
+  "wp_la_quinta": {
+    "cover": "IMG_7248.HEIC"
+  },
+  "wp_san_francisco": {
+    "cover": "2732-mowsf-250518.heic"
+  },
+  "wp_west_pioneer": {
+    "cover": "IMG_0105.jpeg"
+  },
+  "wp_paris": {
+    "cover": "IMG_0147.HEIC"
+  }
+}

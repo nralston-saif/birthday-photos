@@ -1,0 +1,16 @@
+{
+  "hero": "IMG_0147.HEIC",
+  "stops": [
+    {"file": "IMG_3398.JPG", "chapter": "The early years", "title": "Learning to shave"},
+    {"file": "IMG_8078.HEIC", "chapter": "The early years", "title": "Puppies and Chris"},
+    {"file": "IMG_8386.HEIC", "chapter": "Out in the world", "title": "Barcelona"},
+    {"file": "IMG_4373.HEIC", "chapter": "Family celebrations", "title": "Vow renewal"},
+    {"file": "IMG_4775.HEIC", "chapter": "A place of my own", "title": "My first house in Denver"},
+    {"file": "IMG_4243.heic", "chapter": "Out in the world", "title": "Biking in Đà Nẵng"},
+    {"file": "1d0701ae-21eb-4b51-8349-aa1df73ff4d3.jpg", "chapter": "Around the table", "title": "Dinner in Australia"},
+    {"file": "IMG_4563.JPG", "chapter": "Family celebrations", "title": "Engagement!"},
+    {"file": "204_JVS09408.JPG", "chapter": "The wedding", "title": "Wedding speech"},
+    {"file": "228_JVS01660.jpeg", "chapter": "The wedding", "title": "On the dance floor"},
+    {"file": "IMG_0147.HEIC", "chapter": "More places ahead", "title": "Walking in Paris"}
+  ]
+}

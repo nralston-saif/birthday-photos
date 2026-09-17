@@ -1,0 +1,11 @@
+.git
+.github
+originals
+work
+sheets
+.claude
+HANDOFF.md
+site
+.vercel
+.env
+.env.*
