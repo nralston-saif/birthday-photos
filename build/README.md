@@ -52,7 +52,11 @@ places or photos, rather than silently dropping it.
 - `page_template.html`: structural HTML, including native modal dialogs.
 - `web/core.js`: pure assignment/sorting/import logic and serialized save queue.
 - `web/app.js`: views, map interaction, timeline, dialogs, and local editor.
+- `web/map.js`: continuous Leaflet map, individual markers, camera navigation,
+  and a local fallback when online tiles are unavailable.
 - `web/style.css`: desktop and phone layouts in the original atlas palette.
+- `vendor/leaflet/`: Leaflet 1.9.4, bundled locally with its BSD license. Builds
+  copy this directory into the published site without downloading dependencies.
 - `gazetteer.txt`: offline GeoNames place search; packaged lazily as JavaScript.
 
 The editor uses browser storage, not Claude's database. Save success is reported
@@ -61,10 +65,18 @@ available even if browser storage is full or disabled. Each built collection
 has a content version so an old browser draft cannot silently replace a newer
 published collection. Export drafts before deploying a new build.
 
-Map sheets remain pre-rendered images. Zooming changes the rendered image
-width so the browser resamples the source. Coordinates use Web Mercator, as
-in the original pipeline. Clusters group nearby screen positions and provide
-an accessible place list when several locations overlap.
+The map uses one continuous Web Mercator view with individual place markers.
+Choosing a place zooms to it; All places fits the collection. The alphabetical
+index supports searching names and regions, including unaccented spellings.
+The direct place picker keeps nearby locations easy to reach on small screens.
+
+Detailed tiles load on demand from `https://tile.openstreetmap.org/`, with
+visible attribution, normal browser caching, and an origin referrer. The
+Referrer-Policy in both Vercel configurations must permit that origin referrer,
+as required by the [tile policy](https://operations.osmfoundation.org/policies/tiles/).
+Local pre-rendered map images sit underneath the tiles as a fallback; there
+is no sheet selector or clustering interface. When tiles fail, an inline
+message explains that all places and photographs remain available.
 
 HEIC conversion must apply EXIF orientation after `sips`. Skip underscore
 folders during photo scans so generated contact sheets are not re-ingested.

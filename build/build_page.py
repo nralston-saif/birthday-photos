@@ -198,7 +198,7 @@ def render_page(data):
     template = (here / "page_template.html").read_text(encoding="utf-8")
     payload = json.dumps(data, ensure_ascii=True, separators=(",", ":")).replace("<", "\\u003c")
     for token, content in [("/*__DATA__*/null", payload), ("/*__STYLE__*/", (here / "web/style.css").read_text()),
-                           ("/*__CORE__*/", (here / "web/core.js").read_text()), ("/*__APP__*/", (here / "web/app.js").read_text())]:
+                           ("/*__CORE__*/", (here / "web/core.js").read_text()), ("/*__MAP__*/", (here / "web/map.js").read_text()), ("/*__APP__*/", (here / "web/app.js").read_text())]:
         template = template.replace(token, content)
     return template
 

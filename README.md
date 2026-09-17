@@ -6,7 +6,8 @@ Source: https://github.com/nralston-saif/birthday-photos
 
 A birthday atlas for Dad: 61 family photographs, 16 places, and memories from
 2002 to 2026. The complete gift is in `site/publish/`. It works independently
-of Claude and does not need a database, API key, or internet connection.
+of Claude and does not need a database or API key. Photographs, writing, and
+the overview map work offline; detailed map tiles load from OpenStreetMap.
 
 ## Build and preview
 
@@ -23,7 +24,8 @@ Building the existing collection uses Python's standard library only.
 ## The experience
 
 - An 11-stop journey from learning to shave to walking in Paris.
-- A map with grouped pins, regional sheets, and a featured photo for each place.
+- One continuous map with individual place pins, a direct place picker, and
+  an alphabetical, searchable photo index. **All places** returns to the overview.
 - All 61 photographs in chronological order, filterable by year, chapter, and place.
 - A keyboard-accessible photo viewer with full, uncropped images.
 - A local editor for the title, dedication, captions, dates, places, notes, and covers.
@@ -95,6 +97,7 @@ The site asks search engines not to index it; this is not access control.
 - `content/catalog.json`: tracked media catalog, with no original-file metadata.
 - `your-writing/`: authored captions, corrections, places, and journey.
 - `build/web/`: application JavaScript, collection/save logic, and styling.
+- `build/vendor/leaflet/`: self-hosted map library and its license.
 - `build/page_template.html`: accessible HTML layout.
 - `build/build.py`: validated, offline build and asset packaging.
 - `site/publish/`: generated deployable website (ignored).

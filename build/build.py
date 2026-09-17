@@ -30,14 +30,15 @@ def main():
         collector = collect_scanned_data if args.refresh_media else collect_data
         data,assets=collector(ROOT/'work',authored)
         publish=temp/'publish';publish.mkdir()
+        shutil.copytree(ROOT/'build/vendor',publish/'vendor')
         for rel,src in assets.items():
             target=publish/rel;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(src,target)
         html=render_page(data);(publish/'index.html').write_text(html)
         gaz=(ROOT/'build/gazetteer.txt').read_text()
         (publish/'gazetteer.js').write_text('window.__GAZ='+json.dumps(gaz,ensure_ascii=True)+';\n')
-        (publish/'vercel.json').write_text(json.dumps({'framework':None,'buildCommand':None,'outputDirectory':'.','headers':[{'source':'/(.*)','headers':[{'key':'X-Robots-Tag','value':'noindex, nofollow'},{'key':'X-Content-Type-Options','value':'nosniff'},{'key':'Referrer-Policy','value':'same-origin'}]}]},indent=2)+'\n')
+        (publish/'vercel.json').write_text(json.dumps({'framework':None,'buildCommand':None,'outputDirectory':'.','headers':[{'source':'/(.*)','headers':[{'key':'X-Robots-Tag','value':'noindex, nofollow'},{'key':'X-Content-Type-Options','value':'nosniff'},{'key':'Referrer-Policy','value':'strict-origin-when-cross-origin'}]}]},indent=2)+'\n')
         (publish/'robots.txt').write_text('User-agent: *\nDisallow: /\n')
-        (publish/'credits.txt').write_text('Map data: OpenStreetMap contributors, https://www.openstreetmap.org/copyright\nPlace search: GeoNames, https://www.geonames.org/ (CC BY 4.0).\nFamily photographs and writing: private family collection.\n')
+        (publish/'credits.txt').write_text('Map data: OpenStreetMap contributors, https://www.openstreetmap.org/copyright\nMap interface: Leaflet 1.9.4 (BSD-2-Clause), https://leafletjs.com; license: vendor/leaflet/LICENSE\nPlace search: GeoNames, https://www.geonames.org/ (CC BY 4.0).\nFamily photographs and writing: private family collection.\n')
         # All validation finishes before replacing the publishable output.
         output=ROOT/'site/publish';output.mkdir(parents=True,exist_ok=True)
         for src in publish.rglob('*'):

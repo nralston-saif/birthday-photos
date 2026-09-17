@@ -31,5 +31,16 @@ class BuildTests(unittest.TestCase):
         self.assertNotIn('window.claude',page)
         self.assertNotIn('fonts.googleapis.com',page)
         self.assertNotIn('/*__',page)
+    def test_published_map_dependencies_are_self_hosted(self):
+        import re
+        published=ROOT/'site/publish'
+        html=(published/'index.html').read_text()
+        references=re.findall(r'(?:src|href)="(vendor/[^"\s]+)"',html)
+        self.assertEqual(set(references),{'vendor/leaflet/leaflet.js','vendor/leaflet/leaflet.css'})
+        for ref in references: self.assertTrue((published/ref).is_file(),ref)
+        css=(published/'vendor/leaflet/leaflet.css').read_text()
+        for image in re.findall(r'url\((images/[^)]+)\)',css):
+            self.assertTrue((published/'vendor/leaflet'/image).is_file(),image)
+        self.assertTrue((published/'vendor/leaflet/LICENSE').is_file())
 
 if __name__=='__main__':unittest.main()

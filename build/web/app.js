@@ -6,7 +6,7 @@ const button = (text, action, cls) => { const b = el('button', text, cls); b.typ
 const setText = (id, value) => { $(id).textContent = value; };
 const storageKey = 'birthday-atlas:v2:' + DATA.version;
 let edits = C.clone(DATA.edits), collection, currentView = 'journey', stopIndex = 0, selectedPlace, featuredFile, editing = false;
-let panelIndex = 0, mapView = {scale:1,x:0,y:0}, lbFiles = [], lbIndex=0, lbOrigin=null, editOrigin=null, editAction=null;
+let atlasMap = null, lbFiles = [], lbIndex=0, lbOrigin=null, editOrigin=null, editAction=null;
 let noticeTimer;
 function notice(message) { setText('notice',message); $('notice').hidden=false; clearTimeout(noticeTimer); noticeTimer=setTimeout(() => {$('notice').hidden=true;},6000); }
 try {
@@ -68,19 +68,30 @@ function choosePlace(id,{focus=true,fit=true,file=null}={}) {
   if(!collection.placeMap.has(id))return;
   selectedPlace=id;featuredFile=file||null;
   const p=collection.placeMap.get(id);
-  if(fit){panelIndex=bestPanel([p]);mapView={scale:1,x:0,y:0};}
   renderPlaceIndex();renderDetail();renderMap();
-  if(fit && DATA.panels[panelIndex].id==='world') focusPoints([p],3.5);
+  if(fit) atlasMap?.focusPlace(id);
+  $('placeSelect').value=id;
+  setText('mapLocation',p.name+' · '+p.files.length+(p.files.length===1?' photograph':' photographs'));
   if(focus){const target=matchMedia('(max-width:720px)').matches?$('placeDetail'):$('mapView');target.scrollIntoView({block:'start'});if(target===$('placeDetail'))target.focus({preventScroll:true});}
 }
 function visiblePlaces() { return collection.places.filter(p=>p.files.length||editing); }
+function sortedPlaces() { return [...visiblePlaces()].sort((a,b)=>a.name.localeCompare(b.name)); }
 function renderPlaceIndex() {
-  const host=$('placeIndex');host.replaceChildren();const places=visiblePlaces();
-  setText('placeCount',places.length+' places');
-  places.forEach((p,i)=>{
+  const all=sortedPlaces(),select=$('placeSelect'),value=select.value;
+  select.replaceChildren();const first=el('option','Choose a place…');first.value='';select.append(first);
+  all.forEach(p=>{const option=el('option',p.name+' · '+p.files.length+(p.files.length===1?' photo':' photos'));option.value=p.id;select.append(option);});
+  select.value=all.some(p=>p.id===value)?value:'';
+  renderPlaceResults();
+}
+function renderPlaceResults() {
+  const host=$('placeIndex');host.replaceChildren();const all=sortedPlaces(),places=C.findPlaces(all,$('placeSearch').value);
+  setText('placeCount',places.length===all.length?all.length+' places':places.length+' of '+all.length+' places');
+  places.forEach(p=>{
     const b=button('',()=>choosePlace(p.id));b.setAttribute('aria-current',String(p.id===selectedPlace));
-    b.append(el('small',String(i+1).padStart(2,'0')),el('strong',p.name),el('small',p.files.length+(p.files.length===1?' photo · ':' photos · ')+span(p.years)));host.append(b);
+    const cover=collection.photoMap.get(p.cover),im=el('img');if(cover){im.src=cover.thumb;im.alt='';im.loading='lazy';b.append(im);}else b.append(el('span','✧','place-placeholder'));
+    const copy=el('span');copy.append(el('strong',p.name),el('small',p.files.length+(p.files.length===1?' photo · ':' photos · ')+span(p.years)));b.append(copy,el('span','↗','place-arrow'));host.append(b);
   });
+  if(!places.length)host.append(el('p','No places found. Try another name.','place-empty'));
 }
 function renderDetail() {
   const p=collection.placeMap.get(selectedPlace);if(!p)return;
@@ -93,57 +104,18 @@ function renderDetail() {
   const gallery=$('gallery');gallery.replaceChildren();
   for(const file of p.files){const photo=collection.photoMap.get(file),b=button('',()=>{featuredFile=file;renderDetail();});b.setAttribute('aria-label','Feature '+caption(photo)+', '+(photo.year||'year unknown'));b.setAttribute('aria-current',String(file===featuredFile));const im=el('img');im.src=photo.thumb;im.alt=caption(photo);im.loading='lazy';im.width=photo.w;im.height=photo.h;b.append(im);gallery.append(b);}
 }
-const merc = lat => {const s=Math.sin(Math.max(-85,Math.min(85,lat))*Math.PI/180);return .5-Math.log((1+s)/(1-s))/(4*Math.PI);};
-function inside(p,s) {return p.lng>=s.west&&p.lng<=s.east&&p.lat>=s.south&&p.lat<=s.north;}
-function project(p,s) {return {x:(p.lng-s.west)/(s.east-s.west),y:(merc(p.lat)-merc(s.north))/(merc(s.south)-merc(s.north))};}
-function bestPanel(points) {let best=0,area=Infinity;DATA.panels.forEach((s,i)=>{const a=(s.east-s.west)*(merc(s.south)-merc(s.north));if(points.every(p=>inside(p,s))&&a<area){area=a;best=i;}});return best;}
-function dimensions() {const s=DATA.panels[panelIndex],chart=$('chart'),width=chart.clientWidth,height=chart.clientHeight;const base=Math.min(width,height*s.w/s.h);return {width,height,base,baseH:base*s.h/s.w};}
-function applyMapView() {
-  const d=dimensions(),w=d.base*mapView.scale,h=d.baseH*mapView.scale;
-  mapView.x=w<=d.width?(d.width-w)/2:Math.min(0,Math.max(d.width-w,mapView.x));
-  mapView.y=h<=d.height?(d.height-h)/2:Math.min(0,Math.max(d.height-h,mapView.y));
-  const stage=$('mapStage');stage.style.width=w+'px';stage.style.height=h+'px';stage.style.left=mapView.x+'px';stage.style.top=mapView.y+'px';
-  $('chart').classList.toggle('zoomed',mapView.scale>1);$('zoomOut').disabled=mapView.scale<=1;$('zoomIn').disabled=mapView.scale>=8;
-}
 function renderMap() {
   if(currentView!=='map')return;
-  const s=DATA.panels[panelIndex];setImageSource($('mapImg'),s.src);$('mapImg').alt='Map of '+s.title;
-  const select=$('sheetSelect');select.replaceChildren();DATA.panels.forEach((panel,i)=>{const o=el('option',panel.title);o.value=String(i);select.append(o);});select.value=String(panelIndex);
-  applyMapView();renderPins();
+  if(!atlasMap){
+    atlasMap=AtlasMap.create({container:$('chart'),panels:DATA.panels,onSelect:id=>choosePlace(id),onZoom:({min,max})=>{$('zoomOut').disabled=min;$('zoomIn').disabled=max;},onMove:()=>{setText('mapLocation','Explore the map');$('placeSelect').value='';},onStatus:message=>{setText('mapStatus',message);$('mapStatus').hidden=!message;}});
+    atlasMap.setPlaces(visiblePlaces(),selectedPlace);
+    showAllPlaces();
+  }else{atlasMap.resize();atlasMap.setPlaces(visiblePlaces(),selectedPlace);}
 }
-function renderPins() {
-  if(currentView!=='map')return;
-  const s=DATA.panels[panelIndex],d=dimensions(),w=d.base*mapView.scale,h=d.baseH*mapView.scale;
-  const points=visiblePlaces().filter(p=>inside(p,s)).map(p=>({...project(p,s),place:p}));
-  const groups=[];
-  for(const p of points){let group=groups.find(g=>g.some(q=>Math.hypot((p.x-q.x)*w,(p.y-q.y)*h)<48));if(group)group.push(p);else groups.push([p]);}
-  // Merge transitive collisions so no two resulting tap targets overlap.
-  for(let a=0;a<groups.length;a++)for(let b=a+1;b<groups.length;b++)if(groups[a].some(p=>groups[b].some(q=>Math.hypot((p.x-q.x)*w,(p.y-q.y)*h)<48))){groups[a].push(...groups.splice(b,1)[0]);b=a;}
-  const host=$('pins');host.replaceChildren();
-  for(const group of groups){const x=group.reduce((n,p)=>n+p.x,0)/group.length,y=group.reduce((n,p)=>n+p.y,0)/group.length;
-    const b=button(group.length>1?String(group.length):'',()=>group.length>1?openCluster(group.map(p=>p.place)):choosePlace(group[0].place.id),group.length>1?'pin cluster':'pin');
-    b.style.left=x*100+'%';b.style.top=y*100+'%';b.setAttribute('aria-label',group.length>1?'Explore '+group.length+' places: '+group.map(p=>p.place.name).join(', '):group[0].place.name+', '+group[0].place.files.length+' photographs');
-    if(group.length===1){b.setAttribute('aria-current',String(group[0].place.id===selectedPlace));b.append(el('span',group[0].place.name));}host.append(b);
-  }
-}
-function focusPoints(points,minScale=1) {
-  const s=DATA.panels[panelIndex],d=dimensions(),coords=points.map(p=>project(p,s));
-  const xs=coords.map(p=>p.x),ys=coords.map(p=>p.y),cx=(Math.min(...xs)+Math.max(...xs))/2,cy=(Math.min(...ys)+Math.max(...ys))/2;
-  const scale=Math.max(minScale,Math.min(6,d.width*.66/(Math.max(.04,Math.max(...xs)-Math.min(...xs))*d.base),d.height*.66/(Math.max(.04,Math.max(...ys)-Math.min(...ys))*d.baseH)));
-  mapView={scale,x:d.width/2-cx*d.base*scale,y:d.height/2-cy*d.baseH*scale};applyMapView();renderPins();
-}
-function openCluster(places) {
-  const next=bestPanel(places),changed=next!==panelIndex;panelIndex=next;mapView={scale:1,x:0,y:0};
-  if(!places.some(p=>p.id===selectedPlace)){selectedPlace=places[0].id;featuredFile=null;renderDetail();renderPlaceIndex();}
-  renderMap();if(!changed||DATA.panels[next].id==='world')focusPoints(places,1.8);
-  const choices=$('clusterChoices');choices.replaceChildren(el('p','Choose a place in this group'));
-  places.forEach(p=>choices.append(button(p.name,()=>choosePlace(p.id))));choices.hidden=false;
-  choices.querySelector('button')?.focus({preventScroll:true});
-}
-function zoom(factor,cx,cy) {
-  const d=dimensions();cx=cx??d.width/2;cy=cy??d.height/2;
-  const scale=Math.max(1,Math.min(8,mapView.scale*factor)),ratio=scale/mapView.scale;
-  mapView.x=cx-(cx-mapView.x)*ratio;mapView.y=cy-(cy-mapView.y)*ratio;mapView.scale=scale;applyMapView();renderPins();
+function showAllPlaces(){
+  atlasMap?.showAll();$('placeSelect').value='';
+  $('placeSearch').value='';renderPlaceResults();
+  setText('mapLocation','All '+visiblePlaces().length+' places');
 }
 function chapter(p) {
   const stop=DATA.journey.stops.find(s=>s.file===p.file);if(stop)return stop.chapter;
@@ -231,15 +203,13 @@ $('featuredOpen').onclick=()=>openLightbox(photosAt(selectedPlace),featuredFile,
 $('lbClose').onclick=closeLightbox;$('lbPrev').onclick=()=>{if(lbIndex>0)lbIndex--;paintLightbox();};$('lbNext').onclick=()=>{if(lbIndex<lbFiles.length-1)lbIndex++;paintLightbox();};
 $('placePrev').onclick=()=>stepPlace(-1);$('placeNext').onclick=()=>stepPlace(1);
 function stepPlace(delta){const places=visiblePlaces(),i=places.findIndex(p=>p.id===selectedPlace);choosePlace(places[(i+delta+places.length)%places.length].id);}
-$('sheetSelect').onchange=()=>{panelIndex=Number($('sheetSelect').value);mapView={scale:1,x:0,y:0};$('clusterChoices').hidden=true;const places=visiblePlaces().filter(p=>inside(p,DATA.panels[panelIndex]));if(places.length){if(!places.some(p=>p.id===selectedPlace))selectedPlace=places[0].id;featuredFile=null;renderDetail();renderPlaceIndex();}renderMap();};
-$('zoomIn').onclick=()=>zoom(1.5);$('zoomOut').onclick=()=>zoom(1/1.5);$('zoomReset').onclick=()=>{mapView={scale:1,x:0,y:0};renderMap();};
-let drag=null;
-$('chart').addEventListener('pointerdown',e=>{if(e.target.closest('button,a')||mapView.scale<=1)return;drag={id:e.pointerId,x:e.clientX,y:e.clientY};$('chart').setPointerCapture(e.pointerId);});
-$('chart').addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;mapView.x+=e.clientX-drag.x;mapView.y+=e.clientY-drag.y;drag.x=e.clientX;drag.y=e.clientY;applyMapView();});
-['pointerup','pointercancel'].forEach(event=>$('chart').addEventListener(event,()=>{drag=null;}));
-$('chart').addEventListener('wheel',e=>{if(!e.ctrlKey&&!e.metaKey)return;e.preventDefault();const r=$('chart').getBoundingClientRect();zoom(e.deltaY<0?1.15:1/1.15,e.clientX-r.left,e.clientY-r.top);},{passive:false});
+$('placeSelect').onchange=()=>{if($('placeSelect').value)choosePlace($('placeSelect').value);else showAllPlaces();};
+$('placeSearch').oninput=renderPlaceResults;
+$('allPlaces').onclick=()=>{showAllPlaces();$('mapToolbar').scrollIntoView({block:'start'});};
+$('backToMap').onclick=()=>{$('mapToolbar').scrollIntoView({block:'start'});$('placeSelect').focus({preventScroll:true});};
+$('zoomIn').onclick=()=>atlasMap?.zoom(1);$('zoomOut').onclick=()=>atlasMap?.zoom(-1);
 ['yearFilter','chapterFilter','placeFilter'].forEach(id=>$(id).onchange=renderTimeline);$('clearFilters').onclick=()=>{['yearFilter','chapterFilter','placeFilter'].forEach(id=>{$(id).value='';});renderTimeline();};
-window.addEventListener('resize',()=>{if(currentView==='map'){mapView={scale:1,x:0,y:0};renderMap();}});
+window.addEventListener('resize',()=>{if(currentView==='map')atlasMap?.resize();});
 window.addEventListener('beforeunload',e=>{if(saver.isDirty()){e.preventDefault();e.returnValue='';}});
 window.addEventListener('online',()=>saver.flush());
 refresh();

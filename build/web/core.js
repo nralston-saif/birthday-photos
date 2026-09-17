@@ -97,5 +97,10 @@
     }
     return {queue(value) { current = clone(value); revision++; return flush(); }, flush, isDirty: () => saved < revision};
   }
-  return {clone, merge, resolve, comparePhotos, validateEdits, createSaver};
+  function findPlaces(places, query) {
+    const normalize = text => String(text || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'd').toLowerCase();
+    const words = normalize(query).trim().split(/\s+/).filter(Boolean);
+    return places.filter(place => words.every(word => normalize(place.name + ' ' + (place.region || '')).includes(word)));
+  }
+  return {clone, merge, resolve, comparePhotos, validateEdits, createSaver, findPlaces};
 });

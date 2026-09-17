@@ -5,6 +5,16 @@ const C=require('../build/web/core.js');
 const html=fs.readFileSync(require('node:path').join(__dirname,'../site/publish/index.html'),'utf8');
 const data=JSON.parse(html.match(/var DATA = (.*);<\/script>/)[1]);
 
+test('place search finds accented names and regions without changing the collection',()=>{
+ const model=C.resolve(data,data.edits), places=model.places;
+ assert.deepEqual(C.findPlaces(places,' da nang ').map(p=>p.name),['Đà Nẵng']);
+ assert.deepEqual(C.findPlaces(places,'france paris').map(p=>p.name),['Paris']);
+ assert.equal(C.findPlaces(places,'california').some(p=>p.name==='Atherton'),true);
+ assert.equal(C.findPlaces(places,'no such place').length,0);
+ assert.equal(C.findPlaces(places,'  ').length,16);
+ assert.equal(places.length,16);
+});
+
 test('all 61 photographs are assigned exactly once, including the authored locations',()=>{
  const model=C.resolve(data,data.edits);
  assert.equal(model.photos.length,61);assert.equal(model.places.filter(p=>p.files.length).length,16);
