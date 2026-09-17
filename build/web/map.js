@@ -12,7 +12,7 @@ const AtlasMap = (() => {
     const L = window.L;
     const map = L.map(container, {
       zoomControl: false, minZoom: 0, maxZoom: 18, zoomSnap: 0.25,
-      scrollWheelZoom: false, worldCopyJump: true,
+      scrollWheelZoom: true, worldCopyJump: true,
       zoomAnimation: !matchMedia('(prefers-reduced-motion: reduce)').matches
     });
     let places = [], signature = '', selected, changing = false, overview = true;
