@@ -42,7 +42,8 @@ Choose **Edit this collection** in the footer, then **Edit birthday card**. Writ
 as many paragraphs as you need, with a blank line between them, and optionally
 add a sign-off. Choose **Save changes**, then **Preview birthday card** to see it.
 The card grows with the message and scrolls normally on a phone; text is never
-cropped to fit the cover. No personal message has been filled in yet.
+cropped to fit the cover. Nick’s birthday message and sign-off are included in
+the published collection.
 
 Browser edits are local drafts. To make Dad see your message, export the writing
 and publish it using the steps below. The message and sign-off are stored as
