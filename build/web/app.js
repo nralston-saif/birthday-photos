@@ -35,7 +35,7 @@ function span(years) { return years.length ? years[0] === years[years.length-1] 
 function setImageSource(img,src) { if(img.getAttribute('src')===src)return; img.style.opacity='0';img.onload=()=>{img.style.opacity='1';};img.onerror=()=>{img.style.opacity='1';notice('A photograph or map could not load. Please try again.');};img.src=src;if(img.complete)img.style.opacity='1'; }
 function image(id,p,thumbnail=false) { if(!p) return; const img=$(id); setImageSource(img,thumbnail?p.thumb:p.full); img.alt=caption(p); img.width=p.w;img.height=p.h; }
 function renderHeader() {
-  setText('title',collection.meta.title); document.title=collection.meta.title;
+  setText('title',collection.meta.title);
   setText('dedication',collection.meta.dedication);
   const years=[...new Set(collection.photos.map(p=>p.year).filter(Boolean))].sort((a,b)=>a-b);
   const places=collection.places.filter(p=>p.files.length).length;
