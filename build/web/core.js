@@ -55,7 +55,10 @@
       for (const [id, record] of Object.entries(records)) {
         if (['__proto__','constructor','prototype'].includes(id)) throw Error('Invalid identifier.');
         if (section === 'meta') {
-          if (['title','dedication','signature','public_url'].includes(id) && typeof record === 'string') clean.meta[id] = record;
+          if (['title','dedication','signature','public_url','card_message','card_signature'].includes(id)) {
+            if (typeof record !== 'string') throw Error('Invalid text in ' + id);
+            clean.meta[id] = record;
+          }
           continue;
         }
         if (!record || typeof record !== 'object' || Array.isArray(record)) throw Error('Invalid record: ' + id);
@@ -102,5 +105,18 @@
     const words = normalize(query).trim().split(/\s+/).filter(Boolean);
     return places.filter(place => words.every(word => normalize(place.name + ' ' + (place.region || '')).includes(word)));
   }
-  return {clone, merge, resolve, comparePhotos, validateEdits, createSaver, findPlaces};
+  function createCardVisit(storage) {
+    // Keep this independent of collection versions and writing edits.
+    const key = 'birthday-atlas:card-opened:v1';
+    let dismissed = false;
+    try { dismissed = storage.getItem(key) === '1'; } catch (_) {}
+    return {
+      shouldShow: () => !dismissed,
+      dismiss() {
+        dismissed = true;
+        try { storage.setItem(key, '1'); } catch (_) {}
+      }
+    };
+  }
+  return {clone, merge, resolve, comparePhotos, validateEdits, createSaver, findPlaces, createCardVisit};
 });

@@ -4,7 +4,7 @@ Live gift: https://dads-birthday-map.vercel.app
 
 Source: https://github.com/nralston-saif/birthday-photos
 
-A birthday atlas for Dad: 61 family photographs, 16 places, and memories from
+A birthday collection for Dad: 61 family photographs, 16 places, and memories from
 2002 to 2026. The complete gift is in `site/publish/`. It works independently
 of Claude and does not need a database or API key. Photographs, writing, and
 the overview map work offline; detailed map tiles load from OpenStreetMap.
@@ -23,15 +23,36 @@ Building the existing collection uses Python's standard library only.
 
 ## The experience
 
+- A birthday card that unfolds on the first visit, with room for a long personal
+  message and a sign-off. The footer lets you read the card again at any time.
 - An 11-stop journey from learning to shave to walking in Paris.
 - One continuous map with individual place pins, a direct place picker, and
   an alphabetical, searchable photo index. **All places** returns to the overview.
 - All 61 photographs in chronological order, filterable by year, chapter, and place.
 - A keyboard-accessible photo viewer with full, uncropped images.
-- A local editor for the title, dedication, captions, dates, places, notes, and covers.
+- A local editor for the birthday card, title, dedication, captions, dates, places,
+  notes, and covers.
 
 The dedication is exactly **Happy Birthday Dad!**, as requested. The booklet
 was dropped from scope. No physical print artifact is required.
+
+## Write the birthday card
+
+Choose **Edit this collection** in the footer, then **Edit birthday card**. Write
+as many paragraphs as you need, with a blank line between them, and optionally
+add a sign-off. Choose **Save changes**, then **Preview birthday card** to see it.
+The card grows with the message and scrolls normally on a phone; text is never
+cropped to fit the cover. No personal message has been filled in yet.
+
+Browser edits are local drafts. To make Dad see your message, export the writing
+and publish it using the steps below. The message and sign-off are stored as
+`card_message` and `card_signature` in `your-writing/meta.json` after importing
+the export. They are separate from the short **Happy Birthday Dad!** dedication.
+
+First-visit behavior is remembered in browser storage, independently of the
+writing version. Dismissing the card or continuing to the memories marks it read.
+A new browser or cleared storage shows the card again. If storage is unavailable,
+the card can still be opened and dismissed. Its animation respects reduced motion.
 
 ## Your writing is included
 
@@ -39,7 +60,7 @@ was dropped from scope. No physical print artifact is required.
 those files into the page. The original Claude artifact database is no longer
 required to see the complete collection.
 
-Choose **Edit this atlas** in the footer. Changes save on that browser/device;
+Choose **Edit this collection** in the footer. Changes save on that browser/device;
 they do not change what another visitor sees. Save errors are shown honestly,
 retried up to three times, and can be retried manually or exported.
 

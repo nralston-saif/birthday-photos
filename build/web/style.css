@@ -10,3 +10,34 @@
 @media(max-width:1000px){.place-index{grid-template-columns:1fr}}
 @media(max-width:720px){.map-toolbar{flex-wrap:wrap;gap:8px 12px;padding:13px 0;margin-bottom:16px}.map-toolbar label{width:100%;font-size:11px}.map-toolbar select{max-width:none;flex:1;width:100%;font-size:16px}.map-toolbar p{width:100%;margin:2px 0 0;font-size:10px}.overview-button{min-height:44px}.map-column{display:contents}.chart-frame{order:0;width:100%}.map-help{order:1;margin:0}.map-status{order:2;width:100%;margin:0}.place-detail{order:3}.place-browser{order:4;width:100%;margin-top:12px}.place-index{max-height:none;overflow:visible;grid-template-columns:repeat(2,minmax(0,1fr))}.place-index button{grid-template-columns:36px minmax(0,1fr);gap:8px;padding:8px}.place-index img{width:36px;height:44px}.place-index strong{font-size:14px}.place-index small{font-size:8px}.place-arrow{display:none}.map-return{display:block;margin-bottom:16px}.place-search input{font-size:16px}.chart{height:340px}}
 @media(max-width:380px){.view-nav button{font-size:0;gap:0}.view-nav button span{font-size:13px}.view-nav{gap:12px}}
+
+/* The birthday card is a first-visit entrance, and can be reread at any time. */
+.birthday-dialog{position:fixed;inset:0;width:100%;max-width:none;height:100dvh;max-height:none;margin:0;border:0;padding:0;overflow:auto;overscroll-behavior:contain;background:radial-gradient(ellipse at 50% 25%,#faf7ee 0%,#e7eae2 72%);color:var(--ink)}
+.birthday-dialog::backdrop{background:var(--paper)}
+.birthday-skip{position:absolute;top:20px;right:30px;z-index:3;font-size:11px}
+.birthday-stage{display:flex;align-items:center;justify-content:center;min-height:100%;padding:86px 30px 58px;perspective:1600px;overflow:hidden}
+.birthday-book{position:relative;perspective:1600px;width:min(100%,550px);min-height:570px;isolation:isolate;box-shadow:0 20px 65px #24363e16,0 3px 10px #24363e12;background:#fffdf6}
+.birthday-cover{position:absolute;inset:0;z-index:2;width:100%;height:100%;padding:45px 38px 32px;border:1px solid #b1bcae;background:#e1e6dc;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:space-between;transform-origin:0 50%;backface-visibility:hidden;transition:transform .85s cubic-bezier(.3,.1,.2,1),opacity .4s .3s,visibility 0s .85s;box-shadow:inset 5px 0 12px #24363e0a}
+.birthday-cover:before{content:'';position:absolute;inset:15px;border:1px solid #bac4b5;pointer-events:none}
+.birthday-cover:hover{background:#e7eadf}
+.birthday-cover-note{font:10px/1.5 var(--mono);letter-spacing:.17em;text-transform:uppercase;color:var(--mid)}
+.birthday-cover-title{font:clamp(54px,7vw,76px)/.96 var(--display);letter-spacing:-.045em;display:block;margin:32px 0 8px}
+.birthday-cover-title em{font-weight:400;color:var(--mark)}
+.birthday-route{width:80%;height:70px;color:var(--mark);fill:var(--mark);margin:8px 0}
+.birthday-seal{display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--mark);border-radius:50%;font:36px/1 var(--display);color:var(--mark);margin:0 0 20px}
+.birthday-open-label{font:12px/1.5 var(--mono);letter-spacing:.03em}
+.birthday-open-label span{display:inline-block;margin-left:8px}
+.birthday-inside{position:relative;min-height:570px;padding:52px 48px 40px;border:1px solid #d8d8c9;background:linear-gradient(90deg,#ecebdc 0,#fffdf6 14px);animation:card-letter-in .6s ease-out both}
+.birthday-inside h2{font-size:clamp(33px,4vw,43px);letter-spacing:-.03em;line-height:1.12;margin:18px 0 30px;max-width:10ch}
+#birthdayHeading:focus{outline:none}
+.birthday-message{font:19px/1.8 var(--display);overflow-wrap:anywhere}
+.birthday-message p{white-space:pre-line;margin:0 0 1.3em}
+.birthday-message p:last-child{margin-bottom:0}
+.birthday-signature{font:italic 27px/1.5 var(--display);white-space:pre-line;margin-top:32px;overflow-wrap:anywhere;color:var(--mark)}
+.birthday-next{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:38px;border-top:1px solid var(--hair);padding-top:25px}
+.birthday-star{font:34px/1 var(--display);color:var(--mark)}
+.birthday-next button{white-space:normal;text-align:center}
+.birthday-book.is-open .birthday-cover{transform:rotateY(-155deg);opacity:0;visibility:hidden;pointer-events:none}
+#field_card_message{min-height:290px;line-height:1.7;font-family:var(--display);font-size:17px}
+@keyframes card-letter-in{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:600px){.birthday-stage{padding:76px 20px 34px;align-items:flex-start}.birthday-skip{top:16px;right:20px}.birthday-book{min-height:515px}.birthday-cover{padding:36px 24px 28px}.birthday-cover-title{font-size:64px;margin-top:25px}.birthday-cover-note{font-size:9px;letter-spacing:.1em}.birthday-inside{min-height:515px;padding:36px 27px 30px}.birthday-message{font-size:18px;line-height:1.8}.birthday-inside h2{font-size:36px}.birthday-next{gap:12px;margin-top:30px}.birthday-next button{font-size:11px;padding:12px 14px}.birthday-route{height:58px}.birthday-seal{width:42px;height:42px;font-size:30px}}

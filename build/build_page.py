@@ -168,6 +168,9 @@ def collect_scanned_data(work, writing):
 
 def validate_data(data):
     photos, edits = data["photos"], data["edits"]
+    for key in ('card_message', 'card_signature'):
+        if key in edits['meta'] and not isinstance(edits['meta'][key], str):
+            raise ValueError('Invalid birthday card text: ' + key)
     ids = {w["id"] for w in data["waypoints"]} | set(edits["places"])
     if len({w["id"] for w in data["waypoints"]}) != len(data["waypoints"]):
         raise ValueError("Duplicate place identifiers")

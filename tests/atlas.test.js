@@ -5,6 +5,36 @@ const C=require('../build/web/core.js');
 const html=fs.readFileSync(require('node:path').join(__dirname,'../site/publish/index.html'),'utf8');
 const data=JSON.parse(html.match(/var DATA = (.*);<\/script>/)[1]);
 
+test('birthday message paragraphs and sign-off survive validation, export, and resolution',()=>{
+ const meta={card_message:'First paragraph.\n\nA second paragraph.\nAnother line.',card_signature:'With love'};
+ const imported=C.validateEdits(data,JSON.parse(JSON.stringify({meta})));
+ assert.deepEqual(imported.meta,meta);
+ const resolved=C.resolve(data,C.merge(data.edits,imported));
+ assert.equal(resolved.meta.card_message,meta.card_message);
+ assert.equal(resolved.meta.card_signature,meta.card_signature);
+ assert.equal(resolved.meta.dedication,'Happy Birthday Dad!');
+ assert.throws(()=>C.validateEdits(data,{meta:{card_message:{body:'invalid'}}}),/Invalid text/);
+});
+
+test('birthday card is first-visit only after dismissal and survives a new visit',()=>{
+ const saved=new Map(),storage={getItem:key=>saved.get(key),setItem:(key,value)=>saved.set(key,value)};
+ const first=C.createCardVisit(storage);
+ assert.equal(first.shouldShow(),true);
+ assert.equal(C.createCardVisit(storage).shouldShow(),true);
+ first.dismiss();
+ assert.equal(first.shouldShow(),false);
+ assert.equal(C.createCardVisit(storage).shouldShow(),false);
+ assert.equal(saved.size,1);
+});
+
+test('blocked browser storage never traps someone in the birthday card',()=>{
+ const storage={getItem(){throw Error('denied');},setItem(){throw Error('denied');}};
+ const visit=C.createCardVisit(storage);
+ assert.equal(visit.shouldShow(),true);
+ assert.doesNotThrow(()=>visit.dismiss());
+ assert.equal(visit.shouldShow(),false);
+});
+
 test('place search finds accented names and regions without changing the collection',()=>{
  const model=C.resolve(data,data.edits), places=model.places;
  assert.deepEqual(C.findPlaces(places,' da nang ').map(p=>p.name),['Đà Nẵng']);

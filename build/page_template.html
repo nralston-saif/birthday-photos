@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#e7eae2">
-<meta name="description" content="A birthday atlas of family photographs, places, and memories.">
+<meta name="description" content="A birthday collection of family photographs, places, and memories.">
 <title>Some of the places we've been</title>
 <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
 <style>/*__STYLE__*/</style>
@@ -10,7 +10,7 @@
 <body>
 <a class="skip" href="#main">Skip to memories</a>
 <div class="shell">
-<header class="masthead"><button class="wordmark" id="home" aria-label="Return to the opening page"><span class="compass" aria-hidden="true">✧</span> A FAMILY ATLAS</button><span class="edition" id="edition">A birthday collection</span><span class="masthead-note">For Dad, with love.</span></header>
+<header class="masthead"><button class="wordmark" id="home" aria-label="Return to the opening page">Our memories</button><span class="edition" id="edition">A birthday collection</span><span class="masthead-note">For Dad, with love.</span></header>
 <section class="opening" id="opening" aria-labelledby="title">
 <div class="opening-copy"><p class="eyebrow">A collection of our memories</p><h1 id="title"></h1><p class="dedication" id="dedication"></p><div class="opening-actions"><button class="primary" id="startJourney">Start the journey <span aria-hidden="true">→</span></button><button class="text-button" id="exploreMap">Explore the map</button></div><p class="collection-stats" id="collectionStats"></p></div>
 <figure class="opening-photo"><button id="heroOpen" aria-label="Open the cover photograph"><img id="heroImg" fetchpriority="high" alt=""></button><figcaption id="heroCaption"></figcaption></figure>
@@ -30,12 +30,28 @@
 </section>
 <section id="timelineView" hidden aria-labelledby="timelineHeading"><div class="section-heading"><div><p class="eyebrow">The whole collection, in order</p><h2 id="timelineHeading">Through the years.</h2></div><span id="timelineCount" class="small-meta" aria-live="polite"></span></div><div class="filters"><label>Year<select id="yearFilter"><option value="">Every year</option></select></label><label>Chapter<select id="chapterFilter"><option value="">Every chapter</option></select></label><label>Place<select id="placeFilter"><option value="">Every place</option></select></label><button class="text-button" id="clearFilters">Clear filters</button></div><div id="timeline"></div></section>
 </main>
-<aside class="editor-bar" id="editorBar" hidden aria-label="Editing tools"><div><strong>Your copy of the atlas</strong><p>Changes stay on this device. Export your writing to include it in a new build.</p></div><span id="saveStatus" role="status"></span><button id="retrySave" hidden>Retry save</button><button id="editIntro">Edit title & dedication</button><button id="addPlace">Add a place</button><button id="exportWriting">Export writing</button><label class="file-button">Import writing<input id="importWriting" type="file" accept="application/json,.json"></label><button id="finishEditing">Done editing</button></aside>
-<footer><p id="footerStats"></p><div><button class="text-button" id="toggleEditor">Edit this atlas</button></div><p class="footer-note">Made with love, for the places we share.</p></footer>
+<aside class="editor-bar" id="editorBar" hidden aria-label="Editing tools"><div><strong>Your copy of the collection</strong><p>Changes stay on this device. Export your writing to include it in a new build.</p></div><span id="saveStatus" role="status"></span><button id="retrySave" hidden>Retry save</button><button id="editBirthdayCard">Edit birthday card</button><button id="previewBirthdayCard">Preview birthday card</button><button id="editIntro">Edit title & dedication</button><button id="addPlace">Add a place</button><button id="exportWriting">Export writing</button><label class="file-button">Import writing<input id="importWriting" type="file" accept="application/json,.json"></label><button id="finishEditing">Done editing</button></aside>
+<footer><p id="footerStats"></p><div><button class="text-button" id="readBirthdayCard">Read your birthday card</button><button class="text-button" id="toggleEditor">Edit this collection</button></div><p class="footer-note">Made with love, for the places we share.</p></footer>
 </div>
+<dialog id="birthdayCard" class="birthday-dialog" aria-label="A birthday card for Dad">
+<button class="text-button birthday-skip" id="birthdaySkip">Go to memories <span aria-hidden="true">↗</span></button>
+<div class="birthday-stage"><div class="birthday-book" id="birthdayBook">
+<section class="birthday-inside" id="birthdayInside" hidden aria-labelledby="birthdayHeading">
+<p class="eyebrow">For you, Dad</p><h2 id="birthdayHeading" tabindex="-1">Happy Birthday Dad!</h2>
+<div class="birthday-message" id="birthdayMessage"></div><p class="birthday-signature" id="birthdaySignature" hidden></p>
+<div class="birthday-next"><span class="birthday-star" aria-hidden="true">✧</span><button class="primary" id="birthdayContinue">Explore our memories <span aria-hidden="true">→</span></button></div>
+</section>
+<button class="birthday-cover" id="birthdayCover" aria-label="Open your birthday card">
+<span class="birthday-cover-note">A little something for you</span>
+<span class="birthday-cover-title">Happy<br>Birthday<br><em>Dad!</em></span>
+<svg class="birthday-route" viewBox="0 0 300 90" aria-hidden="true" focusable="false"><path d="M20 60 C65 0 115 95 150 45 S230 5 280 38" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 5"/><circle cx="20" cy="60" r="4"/><circle cx="150" cy="45" r="4"/><circle cx="280" cy="38" r="4"/></svg>
+<span class="birthday-seal" aria-hidden="true">✧</span><span class="birthday-open-label">Open your card <span aria-hidden="true">→</span></span>
+</button>
+</div></div>
+</dialog>
 <dialog id="lightbox" class="lightbox" aria-labelledby="lbCaption"><button class="lightbox-close" id="lbClose" aria-label="Close photograph">Close ×</button><figure><img id="lbImg" alt=""><figcaption><h2 id="lbCaption"></h2><p id="lbMeta"></p></figcaption></figure><div class="lightbox-controls"><button id="lbPrev" aria-label="Previous photograph">←</button><span id="lbCount" aria-live="polite"></span><button id="lbNext" aria-label="Next photograph">→</button><button class="editor-only" id="editPhoto" hidden>Edit photograph</button></div></dialog>
 <dialog id="editDialog" class="edit-dialog" aria-labelledby="editHeading"><form id="editForm"><div class="dialog-heading"><h2 id="editHeading"></h2><button type="button" id="editClose" aria-label="Cancel editing">×</button></div><div id="editFields"></div><p id="editError" role="alert"></p><div class="dialog-actions"><button type="button" id="editCancel">Cancel</button><button class="primary" type="submit">Save changes</button></div></form></dialog>
-<div id="notice" class="notice" role="status" hidden></div><noscript><p>This atlas needs JavaScript enabled to explore the photographs.</p></noscript>
+<div id="notice" class="notice" role="status" hidden></div><noscript><p>This collection needs JavaScript enabled to explore the photographs.</p></noscript>
 <script>var DATA = /*__DATA__*/null;</script>
 <script>/*__CORE__*/</script>
 <script src="vendor/leaflet/leaflet.js"></script>

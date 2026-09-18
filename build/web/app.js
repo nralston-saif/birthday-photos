@@ -8,6 +8,8 @@ const storageKey = 'birthday-atlas:v2:' + DATA.version;
 let edits = C.clone(DATA.edits), collection, currentView = 'journey', stopIndex = 0, selectedPlace, featuredFile, editing = false;
 let atlasMap = null, lbFiles = [], lbIndex=0, lbOrigin=null, editOrigin=null, editAction=null;
 let noticeTimer;
+const cardVisit=C.createCardVisit({getItem:key=>localStorage.getItem(key),setItem:(key,value)=>localStorage.setItem(key,value)});
+let cardOrigin=null;
 function notice(message) { setText('notice',message); $('notice').hidden=false; clearTimeout(noticeTimer); noticeTimer=setTimeout(() => {$('notice').hidden=true;},6000); }
 try {
   const stored = localStorage.getItem(storageKey);
@@ -22,7 +24,7 @@ function persist() { saver.queue(edits); refresh(); }
 function refresh() {
   collection=C.resolve(DATA,edits);
   if (!collection.placeMap.has(selectedPlace) || (!editing && !collection.placeMap.get(selectedPlace).files.length)) selectedPlace=collection.places.find(p=>p.files.length)?.id;
-  renderHeader(); renderJourney(); renderFilters(); renderTimeline(); renderPlaceIndex(); renderDetail();
+  renderHeader(); renderBirthdayCard(); renderJourney(); renderFilters(); renderTimeline(); renderPlaceIndex(); renderDetail();
   if(currentView==='map') renderMap();
   document.querySelectorAll('.editor-only').forEach(n=>{n.hidden=!editing;});
 }
@@ -51,6 +53,40 @@ function showView(view,{scroll=true,hideOpening=true}={}) {
   if(view==='map')renderMap();
   if(scroll) {$('main').scrollIntoView({block:'start'});$('main').focus({preventScroll:true});}
 }
+function renderBirthdayCard() {
+  const message=(collection.meta.card_message||'').trim(),host=$('birthdayMessage');
+  host.replaceChildren();
+  if(message) message.split(/\n\s*\n/).forEach(paragraph=>host.append(el('p',paragraph)));
+  host.hidden=!message;
+  const signature=(collection.meta.card_signature||'').trim();
+  setText('birthdaySignature',signature);$('birthdaySignature').hidden=!signature;
+}
+function showBirthdayCard({opened=false,origin=document.activeElement}={}) {
+  cardOrigin=origin;renderBirthdayCard();
+  $('birthdayBook').classList.toggle('is-open',opened);
+  $('birthdayInside').hidden=!opened;
+  $('birthdayCover').inert=opened;
+  $('birthdayCover').setAttribute('aria-hidden',String(opened));
+  $('birthdayCard').showModal();$('birthdayCard').scrollTop=0;
+  document.body.classList.add('modal-open');
+  (opened?$('birthdayHeading'):$('birthdayCover')).focus({preventScroll:true});
+}
+function unfoldBirthdayCard() {
+  $('birthdayInside').hidden=false;
+  $('birthdayBook').classList.add('is-open');
+  $('birthdayHeading').focus({preventScroll:true});
+  $('birthdayCover').inert=true;$('birthdayCover').setAttribute('aria-hidden','true');
+}
+$('birthdayCover').onclick=unfoldBirthdayCard;
+$('birthdayContinue').onclick=()=>{$('birthdayCard').close();};
+$('birthdaySkip').onclick=()=>{$('birthdayCard').close();};
+$('birthdayCard').addEventListener('close',()=>{
+  cardVisit.dismiss();document.body.classList.remove('modal-open');
+  const target=cardOrigin?.isConnected&&cardOrigin!==document.body?cardOrigin:$('startJourney');
+  target.focus({preventScroll:true});
+});
+$('readBirthdayCard').onclick=()=>showBirthdayCard();
+$('previewBirthdayCard').onclick=()=>showBirthdayCard();
 function renderJourney() {
   const stop=DATA.journey.stops[stopIndex],p=collection.photoMap.get(stop.file);
   image('journeyImg',p); setText('journeyChapter',stop.chapter);setText('journeyYear',p.year||'');setText('journeyTitle',stop.title);
@@ -187,10 +223,18 @@ function addNewPlace(){
 }
 function setEditing(value){editing=value;$('editorBar').hidden=!editing;refresh();if(value){$('editorBar').scrollIntoView({block:'center'});notice('Editing your copy. Select a photograph to change its caption, year, or place.');}else notice(saver.isDirty()?'Back to the gift. Your changes are not saved yet; export your writing or retry.':'Back to the gift. Your changes are saved on this device.');}
 $('toggleEditor').onclick=()=>setEditing(true);$('finishEditing').onclick=()=>setEditing(false);$('retrySave').onclick=()=>saver.flush();
+$('editBirthdayCard').onclick=()=>openEditor('Your birthday message',()=>{
+  const message=field('card_message','Message for Dad','textarea',collection.meta.card_message||'');
+  message.rows=12;message.placeholder='Write your birthday message here.\n\nLeave a blank line between paragraphs.';
+  const signature=field('card_signature','Sign-off (optional)','text',collection.meta.card_signature||'');
+  signature.placeholder='Your sign-off';
+  $('editFields').append(el('p','Your paragraphs will appear just as you write them. Save, then choose Preview birthday card to see how it reads.','field-help'));
+  $('editFields').append(el('p','This saves a draft on this device. Export your writing and publish it to include your message on Dad’s copy.','field-help'));
+},values=>{edits.meta.card_message=values.get('card_message').trim();edits.meta.card_signature=values.get('card_signature').trim();});
 $('editIntro').onclick=()=>openEditor('Title & dedication',()=>{field('title','Title','text',collection.meta.title,{required:true});field('dedication','Dedication','textarea',collection.meta.dedication);},values=>{if(!values.get('title').trim())throw Error('Enter a title.');edits.meta.title=values.get('title').trim();edits.meta.dedication=values.get('dedication').trim();});
 $('editPhoto').onclick=editCurrentPhoto;$('editPlace').onclick=editCurrentPlace;$('addPlace').onclick=addNewPlace;
 $('editClose').onclick=closeEditor;$('editCancel').onclick=closeEditor;
-$('exportWriting').onclick=()=>{const blob=new Blob([JSON.stringify(edits,null,2)+'\n'],{type:'application/json'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='birthday-atlas-writing.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notice('Writing exported. Use it with the build command to update the shared atlas.');};
+$('exportWriting').onclick=()=>{const blob=new Blob([JSON.stringify(edits,null,2)+'\n'],{type:'application/json'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='birthday-atlas-writing.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notice('Writing exported. Use it with the build command to update the shared collection.');};
 $('importWriting').onchange=async e=>{try{const file=e.target.files[0];if(!file)return;const imported=C.validateEdits(DATA,JSON.parse(await file.text()));edits=C.merge(edits,imported);persist();notice('Writing imported into your copy.');}catch(err){notice('Could not import: '+err.message);}finally{e.target.value='';}};
 $('home').onclick=()=>{$('opening').hidden=false;showView('journey',{scroll:false,hideOpening:false});window.scrollTo({top:0,behavior:'smooth'});};
 $('startJourney').onclick=()=>{stopIndex=0;renderJourney();showView('journey');};$('exploreMap').onclick=()=>showView('map');
@@ -213,4 +257,5 @@ window.addEventListener('resize',()=>{if(currentView==='map')atlasMap?.resize();
 window.addEventListener('beforeunload',e=>{if(saver.isDirty()){e.preventDefault();e.returnValue='';}});
 window.addEventListener('online',()=>saver.flush());
 refresh();
+if(cardVisit.shouldShow())showBirthdayCard({origin:null});
 })();

@@ -24,6 +24,13 @@ class BuildTests(unittest.TestCase):
         page=render_page(data)
         self.assertNotIn('</script><img',page)
         self.assertIn('\\u003c/script>',page)
+    def test_card_message_is_safe_and_requires_text(self):
+        data=copy.deepcopy(self.data)
+        data['edits']['meta']['card_message']='First paragraph.\n\n</script><img src=x onerror=alert(1)>'
+        validate_data(data)
+        self.assertNotIn('</script><img',render_page(data))
+        data['edits']['meta']['card_message']={'not':'text'}
+        with self.assertRaisesRegex(ValueError,'Invalid birthday card text'): validate_data(data)
     def test_complete_html_without_remote_dependencies(self):
         page=render_page(self.data)
         self.assertIn('name="viewport"',page)
